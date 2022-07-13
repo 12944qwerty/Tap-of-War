@@ -61,4 +61,9 @@ extension UIButton {
             layer.setValue(angle, forKeyPath: "transform.rotation.z")
         }
     }
+    @objc @IBInspectable var zPosition: CGFloat = CGFloat(0) {
+        didSet {
+            layer.zPosition = zPosition
+        }
+    }
 }
