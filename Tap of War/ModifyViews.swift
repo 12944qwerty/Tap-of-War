@@ -53,17 +53,3 @@ extension UIButton {
         }
     }
 }
-
-@IBDesignable class RotatableView: UIView {
-    @objc @IBInspectable var rotationDegrees: Float = 0 {
-        didSet {
-            let angle = NSNumber(value: rotationDegrees / 180.0 * Float.pi)
-            layer.setValue(angle, forKeyPath: "transform.rotation.z")
-        }
-    }
-    @objc @IBInspectable var zPosition: CGFloat = CGFloat(0) {
-        didSet {
-            layer.zPosition = zPosition
-        }
-    }
-}

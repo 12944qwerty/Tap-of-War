@@ -20,10 +20,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onPlayClick(_ sender: Any) {
-        UIView.animate(withDuration: 1.4,
+        UIView.animate(withDuration: 0.7,
                        delay: 0.0,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 3,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
                        animations: {
             self.redImage.frame.size.height = 900
             self.titleLabel.layer.opacity = 0
