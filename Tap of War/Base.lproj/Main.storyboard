@@ -168,17 +168,51 @@
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Blue Wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igY-oU-F45" userLabel="BlueResult">
+                                <rect key="frame" x="0.0" y="610" width="414" height="153"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uql-84-jmU" userLabel="RedResult">
+                                <rect key="frame" x="0.0" y="133" width="414" height="60"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlF-B3-7ut" userLabel="Restart">
+                                <rect key="frame" x="169" y="414" width="76" height="67"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrow.clockwise" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" scale="large" weight="black"/>
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onRestartClick" destination="O1u-Kd-Uvw" eventType="touchUpInside" id="e8g-fD-1Sn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3RM-xr-D7W"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="igY-oU-F45" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="3Ii-wC-11f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nlF-B3-7ut" secondAttribute="trailing" constant="149" id="8ni-ny-ZeG"/>
+                            <constraint firstAttribute="trailing" secondItem="igY-oU-F45" secondAttribute="trailing" id="Gc1-eW-J4g"/>
+                            <constraint firstAttribute="bottom" secondItem="igY-oU-F45" secondAttribute="bottom" constant="133" id="HYj-nt-dty"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" id="Jkd-J7-5om"/>
                             <constraint firstAttribute="bottom" secondItem="WZT-tt-eio" secondAttribute="bottom" constant="409" id="KyP-gQ-kv9"/>
+                            <constraint firstAttribute="trailing" secondItem="Uql-84-jmU" secondAttribute="trailing" id="Oss-pN-0rX"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="trailing" secondItem="8Ny-mU-kqy" secondAttribute="trailing" id="Q2m-VI-VKV"/>
+                            <constraint firstItem="nlF-B3-7ut" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leadingMargin" constant="149" id="XQt-2t-LBj"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="409" id="XtJ-TS-T4T"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="trailing" secondItem="8Ny-mU-kqy" secondAttribute="trailing" id="d7c-2r-zTv"/>
+                            <constraint firstItem="Uql-84-jmU" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="eBg-5H-qAS"/>
+                            <constraint firstItem="nlF-B3-7ut" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="topMargin" constant="370" id="g1K-Cq-hS3"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="lWj-wi-jlh"/>
+                            <constraint firstItem="Uql-84-jmU" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="133" id="nW1-zj-epa"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="nlF-B3-7ut" secondAttribute="bottom" constant="381" id="nkE-vj-TQy"/>
                             <constraint firstAttribute="bottom" secondItem="rct-tX-ymY" secondAttribute="bottom" constant="448" id="v42-ii-R8E"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="zZz-Oj-aPN"/>
                         </constraints>
@@ -188,8 +222,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qft-s0-iZC"/>
                     <connections>
+                        <outlet property="blueResult" destination="igY-oU-F45" id="pdY-ov-sl9"/>
                         <outlet property="countdownLabel" destination="WZT-tt-eio" id="dfa-CN-4YG"/>
                         <outlet property="heightConstraint" destination="v42-ii-R8E" id="pFP-NS-Zkw"/>
+                        <outlet property="redResult" destination="Uql-84-jmU" id="6TJ-7Q-vrL"/>
+                        <outlet property="restartButton" destination="nlF-B3-7ut" id="sQc-Pp-uAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kt6-PY-QaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,6 +263,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="clicker" width="202" height="249"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
@@ -233,6 +271,12 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

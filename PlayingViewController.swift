@@ -7,43 +7,61 @@
 
 import UIKit
 
-let SPEED = 5
-
 class PlayingViewController: UIViewController {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     var middle: CGFloat!
     var middleWidth: CGFloat!
     @IBOutlet weak var countdownLabel: UILabel!
-    var started: Bool = false
+    var started: Bool!
+    var ended: Bool!
     
-    var blueTapCount: Int = 0
-    var redTapCount: Int = 0
+    var blueTapCount: Int!
+    var redTapCount: Int!
+    var SPEED: Int!
+    
+    @IBOutlet weak var redResult: UILabel!
+    @IBOutlet weak var blueResult: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        fullStart()
+    }
+    
+    func fullStart() {
+        SPEED = Int(self.view.frame.height) / 50
         
         middle = view.frame.height / 2
         middleWidth = view.frame.width / 2
+
+        redResult.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        redResult.layer.opacity = 0
+        blueResult.layer.opacity = 0
+        countdownLabel.layer.opacity = 1
+        restartButton.isHidden = true
+        countdownLabel.text = "3"
 //        heightConstraint.constant = 0
-//
-//        UIView.animate(withDuration: 1.5,
-//            delay: 0,
-//            usingSpringWithDamping: 0.6,
-//            initialSpringVelocity: 1,
-//            animations: {
-//            self.heightConstraint.constant = self.view.frame.height / 2
-//            self.view.layoutIfNeeded()
-//            },
-//            completion: countdown
-//        )
-        heightConstraint.constant = middle
-        view.layoutIfNeeded()
-        countdown()
+        
+        blueTapCount = 0
+        redTapCount = 0
+        
+        started = false
+        ended = false
+        
+        self.heightConstraint.constant = self.middle
+        UIView.animate(withDuration: 1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.6,
+            initialSpringVelocity: 1,
+            animations: {
+            self.view.layoutIfNeeded()
+            },
+            completion: countdown
+        )
     }
     
-    func countdown() {
-//        countdownLabel.center.y = middle
-        
+    func countdown(_ l: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.countdownLabel.text = "2"
         })
@@ -62,16 +80,44 @@ class PlayingViewController: UIViewController {
     }
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
-        if started {
+        if started && !ended {
             if sender.view == self.view {
                 blueTapCount += 1
             } else {
                 redTapCount += 1
             }
-            heightConstraint.constant = middle + CGFloat((blueTapCount - redTapCount) * (Int(self.view.frame.height) / 100))
-            UIView.animate(withDuration: 0.1, animations: {
+            heightConstraint.constant = middle + CGFloat((blueTapCount - redTapCount) * SPEED)
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
+            
+            if abs(abs(heightConstraint.constant - middle) - middle) <= self.view.frame.height * 9 / 100 {
+                started = false
+                ended = true
+                
+                var winner = heightConstraint.constant < middle // True, red won, False blue won
+                heightConstraint.constant = heightConstraint.constant < middle ? CGFloat(0) : self.view.frame.height
+                
+                restartButton.isHidden = false
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.view.layoutIfNeeded()
+                    self.restartButton.layer.opacity = 1
+                    if winner {
+                        self.redResult.layer.opacity = 1
+                    } else {
+                        self.blueResult.layer.opacity = 1
+                    }
+                }, completion: {_ in
+                })
+                
+            }
+        }
+    }
+    
+    @IBAction func onRestartClick() {
+        if !started && ended {
+            print("restart")
+            fullStart()
         }
     }
     
