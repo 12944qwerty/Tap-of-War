@@ -22,24 +22,28 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var redResult: UILabel!
     @IBOutlet weak var blueResult: UILabel!
     @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        fullStart()
-    }
-    
-    func fullStart() {
+        
         SPEED = Int(self.view.frame.height) / 50
         
         middle = view.frame.height / 2
         middleWidth = view.frame.width / 2
 
         redResult.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+       
+        fullStart()
+    }
+    
+    func fullStart() {
         redResult.layer.opacity = 0
         blueResult.layer.opacity = 0
+        countdownLabel.isHidden = true
         countdownLabel.layer.opacity = 1
         restartButton.isHidden = true
+        exitButton.isHidden = true
         countdownLabel.text = "3"
 //        heightConstraint.constant = 0
         
@@ -62,6 +66,8 @@ class PlayingViewController: UIViewController {
     }
     
     func countdown(_ l: Bool) {
+        countdownLabel.text = "3"
+        countdownLabel.isHidden = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.countdownLabel.text = "2"
         })
@@ -99,9 +105,13 @@ class PlayingViewController: UIViewController {
                 heightConstraint.constant = heightConstraint.constant < middle ? CGFloat(0) : self.view.frame.height
                 
                 restartButton.isHidden = false
+                exitButton.isHidden = false
+                restartButton.layer.opacity = 0
+                exitButton.layer.opacity = 0
                 UIView.animate(withDuration: 0.5, animations: {
                     self.view.layoutIfNeeded()
                     self.restartButton.layer.opacity = 1
+                    self.exitButton.layer.opacity = 1
                     if winner {
                         self.redResult.layer.opacity = 1
                     } else {
@@ -116,7 +126,6 @@ class PlayingViewController: UIViewController {
     
     @IBAction func onRestartClick() {
         if !started && ended {
-            print("restart")
             fullStart()
         }
     }

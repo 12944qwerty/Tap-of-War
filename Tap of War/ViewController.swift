@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func onPlayClick(_ sender: Any) {
@@ -25,7 +26,7 @@ class ViewController: UIViewController {
                        usingSpringWithDamping: 1,
                        initialSpringVelocity: 1,
                        animations: {
-            self.redImage.frame.size.height = 900
+//            self.redImage.frame.size.height = 900
             self.titleLabel.layer.opacity = 0
             self.playButton.layer.opacity = 0
             self.settingsButton.layer.opacity = 0
@@ -33,6 +34,16 @@ class ViewController: UIViewController {
         }, completion: {_ in
             self.performSegue(withIdentifier: "PlayingScreen", sender: sender)
         })
+    }
+    
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+
+        self.titleLabel.layer.opacity = 1
+        self.playButton.layer.opacity = 1
+        self.settingsButton.layer.opacity = 1
+        self.clickerImage.layer.opacity = 1
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

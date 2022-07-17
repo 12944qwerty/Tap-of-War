@@ -168,8 +168,8 @@
                                 <color key="textColor" systemColor="systemYellowColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Blue Wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igY-oU-F45" userLabel="BlueResult">
-                                <rect key="frame" x="0.0" y="610" width="414" height="153"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue Wins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igY-oU-F45" userLabel="BlueResult">
+                                <rect key="frame" x="0.0" y="703" width="414" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
@@ -180,8 +180,8 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlF-B3-7ut" userLabel="Restart">
-                                <rect key="frame" x="169" y="414" width="76" height="67"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlF-B3-7ut" userLabel="Restart">
+                                <rect key="frame" x="169" y="414" width="66.5" height="67"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="arrow.clockwise" catalog="system" symbolScale="large"/>
@@ -192,19 +192,32 @@
                                     <action selector="onRestartClick" destination="O1u-Kd-Uvw" eventType="touchUpInside" id="e8g-fD-1Sn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZl-9y-Dwg" userLabel="Exit">
+                                <rect key="frame" x="253" y="381" width="82" height="134"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="rectangle.portrait.and.arrow.right" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" scale="large" weight="black"/>
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="jJl-1E-uav" kind="unwind" unwindAction="unwindToHome:" id="wYd-CL-clM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3RM-xr-D7W"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="igY-oU-F45" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="3Ii-wC-11f"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="nlF-B3-7ut" secondAttribute="trailing" constant="149" id="8ni-ny-ZeG"/>
                             <constraint firstAttribute="trailing" secondItem="igY-oU-F45" secondAttribute="trailing" id="Gc1-eW-J4g"/>
                             <constraint firstAttribute="bottom" secondItem="igY-oU-F45" secondAttribute="bottom" constant="133" id="HYj-nt-dty"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" id="Jkd-J7-5om"/>
                             <constraint firstAttribute="bottom" secondItem="WZT-tt-eio" secondAttribute="bottom" constant="409" id="KyP-gQ-kv9"/>
+                            <constraint firstItem="oZl-9y-Dwg" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="381" id="Log-Rq-uBD" userLabel="Exit.top = top + 381"/>
                             <constraint firstAttribute="trailing" secondItem="Uql-84-jmU" secondAttribute="trailing" id="Oss-pN-0rX"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="trailing" secondItem="8Ny-mU-kqy" secondAttribute="trailing" id="Q2m-VI-VKV"/>
+                            <constraint firstAttribute="trailing" secondItem="oZl-9y-Dwg" secondAttribute="trailing" constant="79" id="Tcc-zO-73i"/>
                             <constraint firstItem="nlF-B3-7ut" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leadingMargin" constant="149" id="XQt-2t-LBj"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="409" id="XtJ-TS-T4T"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="trailing" secondItem="8Ny-mU-kqy" secondAttribute="trailing" id="d7c-2r-zTv"/>
@@ -213,6 +226,8 @@
                             <constraint firstItem="WZT-tt-eio" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="lWj-wi-jlh"/>
                             <constraint firstItem="Uql-84-jmU" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="133" id="nW1-zj-epa"/>
                             <constraint firstAttribute="bottomMargin" secondItem="nlF-B3-7ut" secondAttribute="bottom" constant="381" id="nkE-vj-TQy"/>
+                            <constraint firstAttribute="bottom" secondItem="oZl-9y-Dwg" secondAttribute="bottom" constant="381" id="svJ-Y4-C3a" userLabel="bottom = Exit.bottom + 370"/>
+                            <constraint firstItem="oZl-9y-Dwg" firstAttribute="leading" secondItem="nlF-B3-7ut" secondAttribute="trailing" constant="17.5" id="umv-oL-wpU"/>
                             <constraint firstAttribute="bottom" secondItem="rct-tX-ymY" secondAttribute="bottom" constant="448" id="v42-ii-R8E"/>
                             <constraint firstItem="rct-tX-ymY" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="zZz-Oj-aPN"/>
                         </constraints>
@@ -224,12 +239,14 @@
                     <connections>
                         <outlet property="blueResult" destination="igY-oU-F45" id="pdY-ov-sl9"/>
                         <outlet property="countdownLabel" destination="WZT-tt-eio" id="dfa-CN-4YG"/>
+                        <outlet property="exitButton" destination="oZl-9y-Dwg" id="kn2-Ra-fDW"/>
                         <outlet property="heightConstraint" destination="v42-ii-R8E" id="pFP-NS-Zkw"/>
                         <outlet property="redResult" destination="Uql-84-jmU" id="6TJ-7Q-vrL"/>
                         <outlet property="restartButton" destination="nlF-B3-7ut" id="sQc-Pp-uAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kt6-PY-QaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="jJl-1E-uav" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="GCV-UW-ZJC" userLabel="Background Tap">
                     <connections>
                         <action selector="onTap:" destination="O1u-Kd-Uvw" id="zzC-G4-guu"/>
@@ -266,6 +283,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="clicker" width="202" height="249"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
