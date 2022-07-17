@@ -53,3 +53,28 @@ extension UIButton {
         }
     }
 }
+
+@IBDesignable
+extension UILabel {
+    @IBInspectable
+    public var borderWidth: CGFloat {
+        set (width) {
+            self.layer.borderWidth = width
+        }
+        
+        get {
+            return self.layer.borderWidth
+        }
+    }
+    
+    @IBInspectable
+    public var borderColor: UIColor {
+        set (color) {
+            self.layer.borderColor = color.cgColor
+        }
+        
+        get {
+            return UIColor(cgColor: self.layer.borderColor!)
+        }
+    }
+}

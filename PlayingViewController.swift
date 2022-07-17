@@ -19,6 +19,11 @@ class PlayingViewController: UIViewController {
     var redTapCount: Int!
     var SPEED: Int!
     
+    var blueWin: Int = 0
+    @IBOutlet weak var blueWinLabel: UILabel!
+    var redWin: Int = 0
+    @IBOutlet weak var redWinLabel: UILabel!
+    
     @IBOutlet weak var redResult: UILabel!
     @IBOutlet weak var blueResult: UILabel!
     @IBOutlet weak var restartButton: UIButton!
@@ -45,6 +50,12 @@ class PlayingViewController: UIViewController {
         restartButton.isHidden = true
         exitButton.isHidden = true
         countdownLabel.text = "3"
+        blueWinLabel.text = String(blueWin)
+        redWinLabel.text = String(redWin)
+        blueWinLabel.layer.borderColor = UIColor.black.cgColor
+        redWinLabel.layer.borderColor = UIColor.black.cgColor
+        blueWinLabel.layer.borderWidth = 1
+        redWinLabel.layer.borderWidth = 1
 //        heightConstraint.constant = 0
         
         blueTapCount = 0
@@ -89,8 +100,10 @@ class PlayingViewController: UIViewController {
         if started && !ended {
             if sender.view == self.view {
                 blueTapCount += 1
+                print("blue")
             } else {
                 redTapCount += 1
+                print("red")
             }
             heightConstraint.constant = middle + CGFloat((blueTapCount - redTapCount) * SPEED)
             UIView.animate(withDuration: 0.3, animations: {
@@ -113,11 +126,15 @@ class PlayingViewController: UIViewController {
                     self.restartButton.layer.opacity = 1
                     self.exitButton.layer.opacity = 1
                     if winner {
+                        self.redWin += 1
                         self.redResult.layer.opacity = 1
                     } else {
+                        self.blueWin += 1
                         self.blueResult.layer.opacity = 1
                     }
                 }, completion: {_ in
+                    self.blueWinLabel.text = String(self.blueWin)
+                    self.redWinLabel.text = String(self.redWin)
                 })
                 
             }
@@ -130,14 +147,13 @@ class PlayingViewController: UIViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        var next = segue.destination as! ViewController
     }
-    */
+    
 
 }

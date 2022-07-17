@@ -204,6 +204,38 @@
                                     <segue destination="jJl-1E-uav" kind="unwind" unwindAction="unwindToHome:" id="wYd-CL-clM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8RB-lc-oGo">
+                                <rect key="frame" x="0.0" y="393" width="27" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="labelColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMV-zR-SZc">
+                                <rect key="frame" x="0.0" y="448" width="27" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="labelColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3RM-xr-D7W"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -238,10 +270,12 @@
                     <navigationItem key="navigationItem" id="Qft-s0-iZC"/>
                     <connections>
                         <outlet property="blueResult" destination="igY-oU-F45" id="pdY-ov-sl9"/>
+                        <outlet property="blueWinLabel" destination="nMV-zR-SZc" id="a1m-il-CXV"/>
                         <outlet property="countdownLabel" destination="WZT-tt-eio" id="dfa-CN-4YG"/>
                         <outlet property="exitButton" destination="oZl-9y-Dwg" id="kn2-Ra-fDW"/>
                         <outlet property="heightConstraint" destination="v42-ii-R8E" id="pFP-NS-Zkw"/>
                         <outlet property="redResult" destination="Uql-84-jmU" id="6TJ-7Q-vrL"/>
+                        <outlet property="redWinLabel" destination="8RB-lc-oGo" id="qdw-6B-F7g"/>
                         <outlet property="restartButton" destination="nlF-B3-7ut" id="sQc-Pp-uAR"/>
                     </connections>
                 </viewController>
@@ -284,6 +318,9 @@
         <image name="clicker" width="202" height="249"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
