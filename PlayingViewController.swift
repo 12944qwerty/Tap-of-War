@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import AVFoundation
 
-class PlayingViewController: UIViewController {
+class PlayingViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     var middle: CGFloat!
     var middleWidth: CGFloat!
@@ -29,16 +30,29 @@ class PlayingViewController: UIViewController {
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
     
+    @IBOutlet var redViewTap: UITapGestureRecognizer!
+    @IBOutlet var backgroundTap: UITapGestureRecognizer!
+    
+    @IBOutlet weak var redView: UIView!
+    @IBOutlet weak var blueView: UIView!
+    
+    
+    let pianoSound = URL(fileURLWithPath: Bundle.main.path(forResource: "click.mp3", ofType:nil)!)
+    var audioPlayer = AVAudioPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SPEED = Int(self.view.frame.height) / 50
+        SPEED = Int(self.view.frame.height) / 75
         
         middle = view.frame.height / 2
         middleWidth = view.frame.width / 2
 
         redResult.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
        
+        redViewTap.delegate = self
+        backgroundTap.delegate = self
+        
         fullStart()
     }
     
@@ -98,17 +112,23 @@ class PlayingViewController: UIViewController {
     
     @IBAction func onTap(_ sender: UITapGestureRecognizer) {
         if started && !ended {
-            if sender.view == self.view {
+            do {
+                 audioPlayer = try AVAudioPlayer(contentsOf: pianoSound)
+                 audioPlayer.play()
+            } catch {
+               // couldn't load file :(
+            }
+            if sender.view == blueView {
                 blueTapCount += 1
                 print("blue")
             } else {
                 redTapCount += 1
                 print("red")
             }
-            heightConstraint.constant = middle + CGFloat((blueTapCount - redTapCount) * SPEED)
-            UIView.animate(withDuration: 0.3, animations: {
+            heightConstraint.constant = middle + CGFloat((redTapCount - blueTapCount) * SPEED)
+//            UIView.animate(withDuration: 0.1, animations: {
                 self.view.layoutIfNeeded()
-            })
+//            })
             
             if abs(abs(heightConstraint.constant - middle) - middle) <= self.view.frame.height * 9 / 100 {
                 started = false
@@ -154,6 +174,12 @@ class PlayingViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var next = segue.destination as! ViewController
     }
-    
 
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        return gestureRecognizer == redViewTap
+//    }
 }

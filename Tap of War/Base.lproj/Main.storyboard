@@ -154,14 +154,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rct-tX-ymY" userLabel="RedView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="5zh-dX-CPC" appends="YES" id="BWi-67-6II"/>
-                                </connections>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JSU-ck-99g">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnS-Sz-JW3">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="448" id="Wa4-6w-9N2"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5zh-dX-CPC" appends="YES" id="JMg-Ke-Omq"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-q6-GOu">
+                                        <rect key="frame" x="0.0" y="448" width="414" height="448"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="GCV-UW-ZJC" appends="YES" id="Qub-In-mg8"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZT-tt-eio">
                                 <rect key="frame" x="0.0" y="409" width="414" height="78"/>
                                 <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="70"/>
@@ -241,10 +255,11 @@
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JSU-ck-99g" secondAttribute="trailing" id="19W-8s-88a"/>
                             <constraint firstItem="igY-oU-F45" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="3Ii-wC-11f"/>
                             <constraint firstAttribute="trailing" secondItem="igY-oU-F45" secondAttribute="trailing" id="Gc1-eW-J4g"/>
+                            <constraint firstItem="JSU-ck-99g" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" id="GuF-5Z-12p"/>
                             <constraint firstAttribute="bottom" secondItem="igY-oU-F45" secondAttribute="bottom" constant="133" id="HYj-nt-dty"/>
-                            <constraint firstItem="rct-tX-ymY" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" id="Jkd-J7-5om"/>
                             <constraint firstAttribute="bottom" secondItem="WZT-tt-eio" secondAttribute="bottom" constant="409" id="KyP-gQ-kv9"/>
                             <constraint firstItem="oZl-9y-Dwg" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="381" id="Log-Rq-uBD" userLabel="Exit.top = top + 381"/>
                             <constraint firstAttribute="trailing" secondItem="Uql-84-jmU" secondAttribute="trailing" id="Oss-pN-0rX"/>
@@ -252,41 +267,41 @@
                             <constraint firstAttribute="trailing" secondItem="oZl-9y-Dwg" secondAttribute="trailing" constant="79" id="Tcc-zO-73i"/>
                             <constraint firstItem="nlF-B3-7ut" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leadingMargin" constant="149" id="XQt-2t-LBj"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="409" id="XtJ-TS-T4T"/>
-                            <constraint firstItem="rct-tX-ymY" firstAttribute="trailing" secondItem="8Ny-mU-kqy" secondAttribute="trailing" id="d7c-2r-zTv"/>
                             <constraint firstItem="Uql-84-jmU" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="eBg-5H-qAS"/>
                             <constraint firstItem="nlF-B3-7ut" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="topMargin" constant="370" id="g1K-Cq-hS3"/>
+                            <constraint firstItem="JSU-ck-99g" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="hsF-uo-Z2f"/>
                             <constraint firstItem="WZT-tt-eio" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="lWj-wi-jlh"/>
                             <constraint firstItem="Uql-84-jmU" firstAttribute="top" secondItem="8Ny-mU-kqy" secondAttribute="top" constant="133" id="nW1-zj-epa"/>
                             <constraint firstAttribute="bottomMargin" secondItem="nlF-B3-7ut" secondAttribute="bottom" constant="381" id="nkE-vj-TQy"/>
                             <constraint firstAttribute="bottom" secondItem="oZl-9y-Dwg" secondAttribute="bottom" constant="381" id="svJ-Y4-C3a" userLabel="bottom = Exit.bottom + 370"/>
+                            <constraint firstAttribute="bottom" secondItem="JSU-ck-99g" secondAttribute="bottom" id="u44-VW-CFS"/>
                             <constraint firstItem="oZl-9y-Dwg" firstAttribute="leading" secondItem="nlF-B3-7ut" secondAttribute="trailing" constant="17.5" id="umv-oL-wpU"/>
-                            <constraint firstAttribute="bottom" secondItem="rct-tX-ymY" secondAttribute="bottom" constant="448" id="v42-ii-R8E"/>
-                            <constraint firstItem="rct-tX-ymY" firstAttribute="leading" secondItem="8Ny-mU-kqy" secondAttribute="leading" id="zZz-Oj-aPN"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="GCV-UW-ZJC" appends="YES" id="mWe-E2-4x5"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Qft-s0-iZC"/>
                     <connections>
+                        <outlet property="backgroundTap" destination="GCV-UW-ZJC" id="3WP-ey-Qnh"/>
                         <outlet property="blueResult" destination="igY-oU-F45" id="pdY-ov-sl9"/>
+                        <outlet property="blueView" destination="Ozx-q6-GOu" id="MQS-vt-HWb"/>
                         <outlet property="blueWinLabel" destination="nMV-zR-SZc" id="a1m-il-CXV"/>
                         <outlet property="countdownLabel" destination="WZT-tt-eio" id="dfa-CN-4YG"/>
                         <outlet property="exitButton" destination="oZl-9y-Dwg" id="kn2-Ra-fDW"/>
-                        <outlet property="heightConstraint" destination="v42-ii-R8E" id="pFP-NS-Zkw"/>
+                        <outlet property="heightConstraint" destination="Wa4-6w-9N2" id="LTy-wf-ir2"/>
                         <outlet property="redResult" destination="Uql-84-jmU" id="6TJ-7Q-vrL"/>
+                        <outlet property="redView" destination="rnS-Sz-JW3" id="Xtf-WI-Qd3"/>
+                        <outlet property="redViewTap" destination="5zh-dX-CPC" id="BaM-0s-LZk"/>
                         <outlet property="redWinLabel" destination="8RB-lc-oGo" id="qdw-6B-F7g"/>
                         <outlet property="restartButton" destination="nlF-B3-7ut" id="sQc-Pp-uAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kt6-PY-QaY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="jJl-1E-uav" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="GCV-UW-ZJC" userLabel="Background Tap">
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="GCV-UW-ZJC" userLabel="Background Tap">
                     <connections>
                         <action selector="onTap:" destination="O1u-Kd-Uvw" id="zzC-G4-guu"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="5zh-dX-CPC" userLabel="RedView Tap">
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="5zh-dX-CPC" userLabel="RedView Tap">
                     <connections>
                         <action selector="onTap:" destination="O1u-Kd-Uvw" id="CKB-6R-9oZ"/>
                     </connections>
