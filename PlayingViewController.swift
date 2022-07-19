@@ -134,7 +134,7 @@ class PlayingViewController: UIViewController, UIGestureRecognizerDelegate {
                 started = false
                 ended = true
                 
-                var winner = heightConstraint.constant < middle // True, red won, False blue won
+                let winner = heightConstraint.constant < middle // True, red won, False blue won
                 heightConstraint.constant = heightConstraint.constant < middle ? CGFloat(0) : self.view.frame.height
                 
                 restartButton.isHidden = false
@@ -145,7 +145,7 @@ class PlayingViewController: UIViewController, UIGestureRecognizerDelegate {
                     self.view.layoutIfNeeded()
                     self.restartButton.layer.opacity = 1
                     self.exitButton.layer.opacity = 1
-                    if winner {
+                    if !winner {
                         self.redWin += 1
                         self.redResult.layer.opacity = 1
                     } else {
